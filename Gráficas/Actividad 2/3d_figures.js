@@ -160,10 +160,10 @@ function createPyramid(gl, translation, rotationAxis)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexColors), gl.STATIC_DRAW);
 
     // Index data (defines the triangles to be drawn).
-    let cubeIndexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeIndexBuffer);
+    let pyramidIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, pyramidIndexBuffer);
 
-    let cubeIndices = [
+    let pyramidIndices = [
       0, 1, 2,      0, 2, 3,    0, 3, 4,   0, 4, 5,   0, 5, 1,// Front face
       6, 7, 8,    // Face 1
       9, 10, 11,   // Face 2
@@ -175,16 +175,16 @@ function createPyramid(gl, translation, rotationAxis)
 
     // gl.ELEMENT_ARRAY_BUFFER: Buffer used for element indices.
     // Uint16Array: Array of 16-bit unsigned integers.
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeIndices), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(pyramidIndices), gl.STATIC_DRAW);
 
-    let cube = {
-            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:cubeIndexBuffer,
+    let pyramid = {
+            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:pyramidIndexBuffer,
             vertSize:3, nVerts:30, colorSize:4, nColors: 30, nIndices:30,
             primtype:gl.TRIANGLES, modelViewMatrix: mat4.create(), currentTime : Date.now()};
 
-    mat4.translate(cube.modelViewMatrix, cube.modelViewMatrix, translation);
+    mat4.translate(pyramid.modelViewMatrix, pyramid.modelViewMatrix, translation);
 
-    cube.update = function()
+    pyramid.update = function()
     {
         let now = Date.now();
         let deltat = now - this.currentTime;
@@ -200,7 +200,7 @@ function createPyramid(gl, translation, rotationAxis)
         mat4.rotate(this.modelViewMatrix, this.modelViewMatrix, angle, rotationAxis);
     };
 
-    return cube;
+    return pyramid;
 }
 //-------------------------------------------------------------
 //-------------------------------------------------------------
@@ -348,11 +348,11 @@ function createDodecahedron(gl, translation, rotationAxis,rotationAxis2)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexColors), gl.STATIC_DRAW);
 
     // Index data (defines the triangles to be drawn).
-    let cubeIndexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeIndexBuffer);
+    let dodecahedronIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, dodecahedronIndexBuffer);
 
 
-    let cubeIndices = [
+    let dodecahedronIndices = [
             0, 1, 2, 3, 4, 0, 2, 4,
             5, 6, 7, 8, 9, 5, 7, 9,
             10, 11, 12, 13, 14, 10, 12, 14,
@@ -367,19 +367,19 @@ function createDodecahedron(gl, translation, rotationAxis,rotationAxis2)
             55, 56, 57, 58, 59, 55, 57, 59,
         ];
 
-    console.log(cubeIndices);
+    console.log(dodecahedronIndices);
     // gl.ELEMENT_ARRAY_BUFFER: Buffer used for element indices.
     // Uint16Array: Array of 16-bit unsigned integers.
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeIndices), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(dodecahedronIndices), gl.STATIC_DRAW);
 
-    let cube = {
-            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:cubeIndexBuffer,
+    let dodecahedron = {
+            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:dodecahedronIndexBuffer,
             vertSize:3, nVerts:12, colorSize:4, nColors: 12, nIndices:96,
             primtype:gl.TRIANGLE_STRIP, modelViewMatrix: mat4.create(), currentTime : Date.now()};
 
-    mat4.translate(cube.modelViewMatrix, cube.modelViewMatrix, translation);
+    mat4.translate(dodecahedron.modelViewMatrix, dodecahedron.modelViewMatrix, translation);
 
-    cube.update = function()
+    dodecahedron.update = function()
     {
         let now = Date.now();
         let deltat = now - this.currentTime;
@@ -396,7 +396,7 @@ function createDodecahedron(gl, translation, rotationAxis,rotationAxis2)
         mat4.rotate(this.modelViewMatrix, this.modelViewMatrix, angle, rotationAxis2);
     };
 
-    return cube;
+    return dodecahedron;
 }
 //-------------------------------------------------------------
 //-------------------------------------------------------------
@@ -493,10 +493,10 @@ function createOctahedron(gl, translation, rotationAxis)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexColors), gl.STATIC_DRAW);
 
     // Index data (defines the triangles to be drawn).
-    let cubeIndexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeIndexBuffer);
+    let octahedronIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, octahedronIndexBuffer);
 
-    let cubeIndices = [
+    let octahedronIndices = [
       0,1,2,
       3,4,5,
       6,7,8,
@@ -511,19 +511,19 @@ function createOctahedron(gl, translation, rotationAxis)
 
     // gl.ELEMENT_ARRAY_BUFFER: Buffer used for element indices.
     // Uint16Array: Array of 16-bit unsigned integers.
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeIndices), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(octahedronIndices), gl.STATIC_DRAW);
 
-    let cube = {
-            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:cubeIndexBuffer,
+    let octahedron = {
+            buffer:vertexBuffer, colorBuffer:colorBuffer, indices:octahedronIndexBuffer,
             vertSize:3, nVerts:30, colorSize:4, nColors: 30, nIndices:24,
             primtype:gl.TRIANGLES, modelViewMatrix: mat4.create(), currentTime : Date.now()};
 
-    mat4.translate(cube.modelViewMatrix, cube.modelViewMatrix, translation);
+    mat4.translate(octahedron.modelViewMatrix, octahedron.modelViewMatrix, translation);
 
         let up = true;
         let f = 0;
 
-    cube.update = function()
+    octahedron.update = function()
     {
         let now = Date.now();
         let deltat = now - this.currentTime;
@@ -544,7 +544,7 @@ function createOctahedron(gl, translation, rotationAxis)
             up = false;
           }
           else{
-              mat4.translate(cube.modelViewMatrix, cube.modelViewMatrix, [0,0.1,0]);
+              mat4.translate(octahedron.modelViewMatrix, octahedron.modelViewMatrix, [0,0.1,0]);
               f = f + 1;
             }
         }
@@ -553,13 +553,13 @@ function createOctahedron(gl, translation, rotationAxis)
             up = true;
           }
           else{
-              mat4.translate(cube.modelViewMatrix, cube.modelViewMatrix, [0,-0.1,0]);
+              mat4.translate(octahedron.modelViewMatrix, octahedron.modelViewMatrix, [0,-0.1,0]);
               f = f - 1;
               }
             }
     };
 
-    return cube;
+    return octahedron;
 }
 //-------------------------------------------------------------
 
