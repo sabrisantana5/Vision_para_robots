@@ -1,8 +1,5 @@
 
-// 1. Enable shadow mapping in the renderer.
-// 2. Enable shadows and set shadow parameters for the lights that cast shadows.
-// Both the THREE.DirectionalLight type and the THREE.SpotLight type support shadows.
-// 3. Indicate which geometry objects cast and receive shadows.
+//Load avatar and allow only Y rotation
 
 let renderer = null,
 scene = null,
@@ -79,11 +76,6 @@ async function loadObj(objModelUrl, objectList)
     }
 }
 
-function animate()
-{
-}
-
-
 function run()
 {
     requestAnimationFrame(function() { run(); });
@@ -91,11 +83,6 @@ function run()
     // Render the scene
     renderer.render( scene, camera );
 
-    // Spin the cube for next frame
-    //animate();
-
-    // Update the camera controller
-    //transformControls.update();
 }
 
 function setLightColor(light, r, g, b)
@@ -160,15 +147,16 @@ function createScene(canvas)
     ambientLight = new THREE.AmbientLight ( 0xffffff, 0.8);
     root.add(ambientLight);
 
-    //TransformControls
+    //Create TransformControls
     control = new THREE.TransformControls( camera, renderer.domElement );
     control.addEventListener( 'change', function() {
     control.update();
     renderer.render(scene);
     });
 
-    // Create the objects
+    // Create the objects, in this case only one object
     loadObj(objModelUrl, objectList);
+
     // Create a group to hold the objects
     group = new THREE.Object3D;
     root.add(group);
@@ -191,7 +179,7 @@ function createScene(canvas)
 
     scene.add( root );
 
-    //ADD CONTROL
+    //ADD CONTROL and allow only Y rotation
     scene.add( control );
     control.showX = false;
     control.showZ = false;
