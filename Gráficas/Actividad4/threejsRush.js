@@ -121,9 +121,11 @@ function onDocumentMouseDown(event) //evento del click
     {
         CLICKED = intersects[ intersects.length - 1 ].object.parent;//aqui le puse el parent por el group
         console.log(CLICKED.name);
+        if(stop!=true){
         counter  = counter + 1;
         document.querySelector('#score').textContent = "Score: " + counter; //actualiza el score
         CLICKED.position.set(Math.random() * 200 - 100, Math.random() * 200 - 100, -100); //regresa el objeto al inicio del nivel
+      }
     }
     else
     {
