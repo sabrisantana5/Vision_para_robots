@@ -8,6 +8,20 @@ body{
 	left:20px;
 	top:20px;
 }
+#score {
+	position:absolute;
+	font-size:40px;
+	color:MidnightBlue;
+	left:20px;
+	top:60px;
+}
+#time {
+	position:absolute;
+	font-size:40px;
+	color:MidnightBlue;
+	left:20px;
+	top:20px;
+}
 
 #prompt {
 	position:absolute;
@@ -54,4 +68,3 @@ body{
 	position: absolute;
 	top:160px;
 }
-
